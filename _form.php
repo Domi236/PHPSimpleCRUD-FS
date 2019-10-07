@@ -1,3 +1,9 @@
+<?php
+include_once __DIR__ . '/assets/js/generate_password.php';
+
+?>
+
+
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -30,6 +36,28 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label>Password</label>
+                    <input name="password" value="<?php echo $user['password'] ?>"
+                           class="form-control input_password <?php echo $errors['password'] ? 'is-invalid' : '' ?>">
+                    <br/><button type="button" class="generate_one">Generate Password</button>
+                    <label for="uppercase"><input id="uppercase" type="checkbox" name="checkbox" checked>Großbuchstaben (A-Z)</label>
+                    <label for="lowercase"><input id="lowercase" type="checkbox" name="checkbox" checked>Kleinbuchstaben (a-z)</label>
+                    <label for="numbers"><input id="numbers" type="checkbox" name="checkbox" checked>Zahlen (1-9)</label>
+                    <label for="specialCharacter"><input id="specialCharacter" type="checkbox" name="checkbox" checked>Sonderzeichen (@({[/=...)</label>
+                    <select name="selector" class="password_length">
+                        <?php for($i = 8; $i <= 20; $i++) {
+                            if($i == 15) {
+                                echo "<option value='$i' selected>$i</option>";
+                            } else {
+                                echo "<option value='$i'>$i</option>";
+                            }
+                        }  ?>
+                    </select>
+                    <div class="invalid-feedback">
+                        <?php echo  $errors['password'] ?>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Email</label>
                     <input name="email" value="<?php echo $user['email'] ?>"
                            class="form-control  <?php echo $errors['email'] ? 'is-invalid' : '' ?>">
@@ -58,7 +86,7 @@
                     <input name="picture" type="file" class="form-control-file">
                 </div>
 
-                <button class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>
     </div>

@@ -3,6 +3,8 @@ require 'users/users.php';
 
 $users = getUsers();
 
+require "assets/js/generate_password.php";
+
 include 'partials/header.php';
 ?>
 
@@ -18,6 +20,7 @@ include 'partials/header.php';
             <th>Image</th>
             <th>Name</th>
             <th>Username</th>
+            <th>Password</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Website</th>
@@ -34,6 +37,7 @@ include 'partials/header.php';
                 </td>
                 <td><?php echo $user['name'] ?></td>
                 <td><?php echo $user['username'] ?></td>
+                <td><?php echo $user['password'] ?></td>
                 <td><?php echo $user['email'] ?></td>
                 <td><?php echo $user['phone'] ?></td>
                 <td>

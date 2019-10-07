@@ -17,6 +17,7 @@ if (!$user) {
 $errors = [
     'name' => "",
     'username' => "",
+    'password' => "",
     'email' => "",
     'phone' => "",
     'website' => "",

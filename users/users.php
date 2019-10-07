@@ -99,6 +99,10 @@ function validateUser($user, &$errors)
         $isValid = false;
         $errors['username'] = 'Username is required and it must be more than 6 and less then 16 character';
     }
+    if (!$user['password'] || strlen($user['password']) < 7) {
+        $isValid = false;
+        $errors['password'] = 'Password is required and it must be more than 7 character';
+    }
     if ($user['email'] && !filter_var($user['email'], FILTER_VALIDATE_EMAIL)) {
         $isValid = false;
         $errors['email'] = 'This must be a valid email address';
